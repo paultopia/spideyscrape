@@ -5,8 +5,7 @@ def clearJunk(BSobj):
 	[s.extract() for s in BSobj(['style', 'script'])]
 
 def makeSoup(url):
-	r = urllib.urlopen(url)
-	soup = BS(r)
+	soup = BS(urllib.urlopen(url))
 	clearJunk(soup)
 	return soup
 	
@@ -14,24 +13,17 @@ def getBody(BSobj):
 	return ' '.join([str(i) for i in BSobj.find('body').find_all(recursive=False)])
 	
 def stripAnchor(url):
-	badness = url.find('#')
-	if badness != -1:
-		return url[:badness]
-	return url
+	return url.partition('#')[0]
 
-def getPage(url):	
-	soup = makeSoup(url)
-	if url[-5:] == '.html' or url[-4:] == '.htm':
-		url = url[:url.rfind('/') + 1]
-	return (soup, url)
+def getPage(url):
+	if url.rpartition('.')[2] in ('html', 'htm'):
+		url = url.rpartition('/')[2] or url
+	return (makeSoup(url), url)
 
-def rootify(url): 
-	if url[:7] == 'http://':
-		base = 'http://'
-		chopped = url[7:]
-	elif url[:8] == 'https://':
-		base = 'https://'
-		chopped = url[8:]
+def rootify(url):
+	protocol, colon_slash_slash, chopped = url.partition('://')
+	if protocol in ('http', 'https'):
+		base = protocol + colon_slash_slash
 	else: 
 		base = 'http://'
 		chopped = url
@@ -43,17 +35,14 @@ def rootify(url):
 
 def filterLinks(root, link):
 	# checks non-relative links to see if link contains domain of original page
-	if link[:7] == 'http://' or link[:8] == 'https://':
-		if root not in link:
-			return False
+	if link.startswith('http://') or link.startswith('https://'):
+		return root in link
 	return True 
 
 def transformLink(base, root, url, link):
-	if link [:4] == 'http':
+	if link.startswith('http'):
 		return link
-	if link[0] == '/':
-		return base + root + link
-	return url + link
+	return base + root + link if link[0] == '/' else url + link
 
 def makeLinks(base, root, url, soup):
 	links = filter(lambda x: 'mailto:' not in x, [stripAnchor(alink['href']) for alink in soup.find_all('a', href=True)])
@@ -64,11 +53,11 @@ def makeTexts(uniques, soup):
 	texts = [getBody(makeSoup(aurl)) for aurl in uniques]
 	texts.insert(0, getBody(soup))
 	boilerplate = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>'
-	return boilerplate + '<br><br>'.join(texts) + '</html></body>'
+	return '{}{}</html></body>'.format(boilerplate, '<br><br>'.join(texts))
 
 def savePage(texts):
-	from time import gmtime, strftime
-	filename = 'scrape' + str(strftime("%Y%m%d%H%M%S", gmtime())) + '.html'
+	import datetime as dt
+	filename = 'scrape{:%Y%m%d%H%M%S}.html'.format(dt.datetime.now())
 	with open(filename, 'w') as outfile:
 		outfile.write(texts)
 	return filename
@@ -80,7 +69,8 @@ def scrape(start):
 	return makeTexts(uniques, soup)
 
 if __name__ == "__main__":
-	start = raw_input('URL to crawl: ')
+	args = sys.argv[1:]  # see if the user gave us a command line argument
+	start = args[0] if args else raw_input('URL to crawl: ')
 	html = scrape(start)
 	filename = savePage(html)
 	print 'Scraping complete! Output saved as: ' + filename
