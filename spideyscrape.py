@@ -30,7 +30,7 @@ def rootify(url):
 		chopped = url
 	if chopped.find('/') != -1:
 		root = chopped[:chopped.find('/')]
-	else: 
+	else:
 		root = chopped
 	return (base, root)
 
