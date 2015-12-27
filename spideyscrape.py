@@ -16,9 +16,10 @@ def stripAnchor(url):
 	return url.partition('#')[0]
 
 def getPage(url):
+ 	soup = makeSoup(url)
 	if url.rpartition('.')[2] in ('html', 'htm'):
-		url = url.rpartition('/')[2] or url
-	return (makeSoup(url), url)
+		url = url[:url.rfind('/') + 1]
+	return (soup, url)
 
 def rootify(url):
 	protocol, colon_slash_slash, chopped = url.partition('://')
