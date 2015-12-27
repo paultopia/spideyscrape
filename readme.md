@@ -4,12 +4,13 @@ This is a very basic scraper-spider for those html books where there's a table o
 
 Dependencies: Beautiful Soup 4 on Python 2.7.
  
-It assumes all content is vanilla html or at least can be accessed through vanilla html.
+It assumes all content is vanilla html or at least can be accessed through vanilla html.  
 
 **Usage**:
-Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get. This script scrapes every unique page linked from ToC and concatenates the contents of their html bodies into one big html page (which is technically invalid as lacks html tag, doctype, etc., but every browser in the world forgives this so really who cares?).
+
+Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get. This script scrapes every unique page linked from ToC and concatenates the contents of their html bodies into one big html page.
  
-The point is to save those things for offline reading, for planes etc.  It targets [Pythonista](http://omz-software.com/pythonista/) (relatedly: this is a self fork of the gist at https://gist.github.com/paultopia/02ca124a111a70faf174 which gist is no longer being updated, but works in basic form.) on iPad for optimum usefulness as offline reader, though should also work fine on real computers, also on phones and such.
+The point is to save those things for offline reading, for planes etc.  It targets [Pythonista](http://omz-software.com/pythonista/) (relatedly: this is a self fork of the gist at https://gist.github.com/paultopia/02ca124a111a70faf174 which gist is no longer being updated, but works in basic form.) on iPad for optimum usefulness as offline reader, but also works fine on real computers.
 
 Please only scrape content with copyright terms that permit copying.  Be nice to writers.  The primary intended use of this is to scrape documents offered to the public under licenses that permit copying, but which are often distributed in clueless formats (such as the documentation for many open-source software packages, which is often provided under Creative Commons or MIT licenses, permitting scraping).
 
@@ -17,11 +18,11 @@ Please only scrape content with copyright terms that permit copying.  Be nice to
 
 PRs are welcome.  Go wild.  :-)  However, I'd like to keep this runnable on both Pythonista on iOS and full-sized computers, so please don't rely on any Pythonista-specific libraries (like the clipboard module) without also providing a fallback for big machines; likewise please don't rely on any libraries that can't be installed in Pythonista without providing a more vanilla fallback.  
 
-**Next steps**: 
+**Future**: 
 
-1.  I'm about to do a tiny little refactor to make it a bit more modular and easy to contribute. 
+1.  Down the road, I'd like to extend to make it possible to specify a crawl depth to recursively scrape to, and figure out some sensible way to order the sub-pages in that context. 
 
-2.  Down the road, I'd like to extend to make it possible to specify a crawl depth to recursively scrape too, and figure out some sensible way to order the sub-pages in that context. 
+2.  It would also be cool to download and include images embedded in the original page.  Right now absolute url images should work but relative url images will probably break (not tested).  
 
 **Terms**: 
 
