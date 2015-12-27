@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup as BS
-import urllib 
+import sys, urllib
 
 def clearJunk(BSobj):
 	[s.extract() for s in BSobj(['style', 'script'])]
