@@ -8,9 +8,13 @@ It assumes all content is vanilla html or at least can be accessed through vanil
 
 **Usage**:
 
-Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get. This script scrapes every unique page linked from ToC and concatenates the contents of their html bodies into one big html page.
+Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get (or via a command line argument, thanks to a kind contribution from cclauss). This script scrapes every unique page linked from the ToC and concatenates the contents of their html bodies into one big html page.
  
-The point is to save those things for offline reading, for planes etc.  It targets [Pythonista](http://omz-software.com/pythonista/) (relatedly: this is a self fork of the gist at https://gist.github.com/paultopia/02ca124a111a70faf174 which gist is no longer being updated, but works in basic form.) on iPad for optimum usefulness as offline reader, but also works fine on real computers.
+The point is to save those things for offline reading, for planes etc.  It targets [Pythonista](http://omz-software.com/pythonista/) on iPad for optimum usefulness as offline reader, but also works fine on real computers.  On the iPad with Pythonista, probably the most useful way to invoke this script is by saving the following bookmarklet to Mobile Safari: 
+
+    javascript:window.location='pythonista://spideyscrape.py?action=run&args='+window.location.href;
+
+Then navigate to the ToC page you want to scrape and activate the bookmarklet.  
 
 Please only scrape content with copyright terms that permit copying.  Be nice to writers.  The primary intended use of this is to scrape documents offered to the public under licenses that permit copying, but which are often distributed in clueless formats (such as the documentation for many open-source software packages, which is often provided under Creative Commons or MIT licenses, permitting scraping).
 
