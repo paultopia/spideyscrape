@@ -2,7 +2,7 @@
 
 This is a very basic scraper-spider for those html books where there's a table of contents page that links to a bunch of sub-pages with actual content (like the documentation for a bunch of libraries).
 
-Dependencies: Beautiful Soup 4 on Python 2.7.
+Dependencies: Beautiful Soup 4 on Python 2.7+ (including Python 3.x).
  
 It assumes all content is vanilla html or at least can be accessed through vanilla html.  
 
