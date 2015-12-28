@@ -75,4 +75,4 @@ if __name__ == "__main__":
 	start = args[0] if args else raw_input('URL to crawl: ')
 	html = scrape(start)
 	filename = savePage(html)
-	print 'Scraping complete! Output saved as: ' + filename
+	print ('Scraping complete! Output saved as: ' + filename)
