@@ -1,5 +1,7 @@
+#!/usr/bin/env python
+
 from bs4 import BeautifulSoup as BS
-import sys, urllib
+import sys, urllib, datetime as dt
 
 def clearJunk(BSobj):
 	[s.extract() for s in BSobj(['style', 'script'])]
@@ -57,7 +59,6 @@ def makeTexts(uniques, soup):
 	return '{}{}</html></body>'.format(boilerplate, '<br><br>'.join(texts))
 
 def savePage(texts):
-	import datetime as dt
 	filename = 'scrape{:%Y%m%d%H%M%S}.html'.format(dt.datetime.now())
 	with open(filename, 'w') as outfile:
 		outfile.write(texts)
