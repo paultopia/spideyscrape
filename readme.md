@@ -8,7 +8,7 @@ It assumes all content is vanilla html or at least can be accessed through vanil
 
 **Usage**:
 
-`python spideyscrape.py [http://url/for/table_of_contents/toc.html]`
+`python spideyscrape.py http://url/for/table_of_contents/toc.html`
 
 Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get (or via a command line argument, thanks to a kind contribution from @cclauss). This script scrapes every unique page linked from the ToC and concatenates the contents of their html bodies into one big html page.
  
