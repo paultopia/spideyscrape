@@ -2,9 +2,9 @@
 
 from bs4 import BeautifulSoup as BS
 try:
-	from urllib.request import urlopen
+  from urllib.request import urlopen
 except ImportError:
-	from urllib import urlopen
+  from urllib import urlopen
 import sys, datetime as dt
 
 def clearJunk(BSobj):
@@ -24,7 +24,7 @@ def stripAnchor(url):
 def getPage(url):
   soup = makeSoup(url)
   if url.rpartition('.')[2] in ('html', 'htm'):
-  	url = url[:url.rfind('/') + 1]
+    url = url[:url.rfind('/') + 1]
   return (soup, url)
 
 def rootify(url):
@@ -77,9 +77,9 @@ def scrape(start):
 if __name__ == "__main__":
   args = sys.argv[1:]  # see if the user gave us a command line argument
   try:
-  	input = raw_input
+    input = raw_input
   except NameError:
-  	pass
+    pass
   start = args[0] if args else input('URL to crawl: ')
   html = scrape(start)
   filename = savePage(html)
