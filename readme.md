@@ -8,7 +8,9 @@ It assumes all content is vanilla html or at least can be accessed through vanil
 
 **Usage**:
 
-Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get (or via a command line argument, thanks to a kind contribution from cclauss). This script scrapes every unique page linked from the ToC and concatenates the contents of their html bodies into one big html page.
+`python spideyscrape.py [http://url/for/table_of_contents/toc.html]`
+
+Run script from terminal (etc.), then pass the script a url to the table of contents (ToC) page through the prompt you get (or via a command line argument, thanks to a kind contribution from @cclauss). This script scrapes every unique page linked from the ToC and concatenates the contents of their html bodies into one big html page.
  
 The point is to save those things for offline reading, for planes etc.  It targets [Pythonista](http://omz-software.com/pythonista/) on iPad for optimum usefulness as offline reader, but also works fine on real computers.  On the iPad with Pythonista, probably the most useful way to invoke this script is by saving the following bookmarklet to Mobile Safari: 
 
