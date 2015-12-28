@@ -18,6 +18,10 @@ The point is to save those things for offline reading, for planes etc.  It targe
 
 Then navigate to the ToC page you want to scrape and activate the bookmarklet.  
 
+You can also `import` this as a module from some other script, in which case `spideyscrape.scrape('http://url/for/table_of_contents/toc.html')` will return the offline-capable HTML document.  This is mostly useful on iPad if you'd like to do something with the document other than save to the local filesystem, like pass it to [a Dropbox script](https://gist.github.com/mlgill/8311088) or [a document conversion script](http://wcm1.web.rice.edu/pandoc-on-ios.html) or the like.  
+
+Speaking of Pythonista: as it turns out, it's a bit of a hassle to get html files out of its internal filesystem (as of 12-28-15).  The export action in the basic Pythonista action menu, for whatever reason, will only let you export files with a .py extension.  A cheap workaround to get the resulting html file in Dropbox, Google Drive, etc. anyway is to just temporarily slap a .py extension on the html file.  Then, by magic, the export menu will appear, and, thereafter, the good old iOS "open in" dialogue.
+
 Please only scrape content with copyright terms that permit copying.  Be nice to writers.  The primary intended use of this is to scrape documents offered to the public under licenses that permit copying, but which are often distributed in clueless formats (such as the documentation for many open-source software packages, which is often provided under Creative Commons or MIT licenses, permitting scraping).
 
 **Contributing**: 
