@@ -1,4 +1,4 @@
-**Basics**:
+**Basics**
 
 This is a very basic scraper-spider for those html books where there's a table of contents page that links to a bunch of sub-pages with actual content (like the documentation for a bunch of libraries).
 
@@ -6,7 +6,7 @@ Dependencies: Beautiful Soup 4 on Python 2.7+ (including Python 3.x).
  
 It assumes all content is vanilla html or at least can be accessed through vanilla html.  
 
-**Usage**:
+**Usage**
 
 `python spideyscrape.py http://url/for/table_of_contents/toc.html`
 
@@ -28,23 +28,23 @@ As it turns out, it's a bit of a hassle to get html files out of its internal fi
 
 However, the *easiest possible way* to scrape something then get it right out of Pythonista is to download the wrapper script scrapewrap.py from the pythonista-wrappers directory, then change your bookmarklet to point to it rather than spideyscrape.py --- it will simply pop up an "open in" menu when scraping is complete, and you can send the resulting file directly to Dropbox, PDF converter, or whatever.  Note that this wrapper will also quietly delete the original file from the pythonista internal filesystem (sandbox) to keep the clutter down, so the file you open in the other application will be the only one that exists.
 
-**Lawful uses**:
+**Lawful uses**
 
 Please only scrape content with copyright terms that permit copying.  Be kind to writers.  
 
 The primary intended use of this is to scrape documents offered to the public under licenses that permit copying, but which are often distributed in clueless formats (such as the documentation for many open-source software packages, which is often provided under Creative Commons or MIT licenses, permitting scraping).
 
-**Contributing**: 
+**Contributing**
 
 PRs are welcome.  Go wild.  :-)  However, I'd like to keep this runnable on both Pythonista on iOS and full-sized computers, so please don't rely on any Pythonista-specific libraries (like the clipboard module) without also providing a fallback for big machines.  (The exception is for wrapper scripts in the pythonista-wrappers directory.  Also, more wrapper scripts eagerly solicited!) Likewise please don't rely on any libraries that can't be installed in Pythonista without providing a more vanilla fallback.  Finally, please don't break compatibility with both Python 2 and 3.  If lots of people want to contribute I suppose I'll have to write a test suite...
 
-**Future**: 
+**Future**
 
 1.  Down the road, I'd like to extend to make it possible to specify a crawl depth to recursively scrape to, and figure out some sensible way to order the sub-pages in that context. 
 
-2.  It would also be cool to download and include images embedded in the original page.  Right now absolute url images should work but relative url images will probably break (not tested).  
+2.  It would also be cool to download and include images embedded in the original page.  Not sure if there's a good way to do this at all, though.  Right now absolute url images should work as plain html links in resulting documents, but relative url images will probably break (not tested).  
 
-**Terms**: 
+**Terms**
 
 The MIT License (MIT)
 Copyright (c) 2015 Paul Gowder <http://paul-gowder.com>
