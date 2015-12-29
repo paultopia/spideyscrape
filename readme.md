@@ -26,7 +26,9 @@ You can also `import` this as a module from some other script, in which case `sp
 
 As it turns out, it's a bit of a hassle to get html files out of its internal filesystem (as of 12-28-15).  The export action in the basic Pythonista action menu, for whatever reason, will only let you export files with a .py extension.  A cheap workaround to get the resulting html file in Dropbox, Google Drive, etc. anyway is to just temporarily slap a .py extension on the html file.  Then, by magic, the export menu will appear, and, thereafter, the good old iOS "open in" dialogue.
 
-However, the *easiest possible way* to scrape something then get it right out of Pythonista is to download the wrapper script scrapewrap.py from the pythonista-wrappers directory, then change your bookmarklet to point to it rather than spideyscrape.py --- it will simply pop up an "open in" menu when scraping is complete, and you can send the resulting file directly to Dropbox, PDF converter, or whatever.  Note that this wrapper will also quietly delete the original file from the pythonista internal filesystem (sandbox) to keep the clutter down, so the file you open in the other application will be the only one that exists.
+However, the *easiest possible way* to scrape something then get it right out of Pythonista is to download the wrapper script scrapewrap.py from the pythonista-wrappers directory, then change your bookmarklet to point to it rather than spideyscrape.py --- it will simply pop up an "open in" menu when scraping is complete, and you can send the resulting file directly to Dropbox, PDF converter, or whatever.  Note that this wrapper will also quietly delete the original file from the pythonista internal filesystem (sandbox) to keep the clutter down, so the file you open in the other application will be the only one that exists.  
+
+    javascript:window.location='pythonista://scrapewrap.py?action=run&args='+window.location.href;
 
 **Lawful uses**
 
