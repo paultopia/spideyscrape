@@ -22,6 +22,8 @@ You can also `import` this as a module from some other script, in which case `sp
 
 Speaking of Pythonista: as it turns out, it's a bit of a hassle to get html files out of its internal filesystem (as of 12-28-15).  The export action in the basic Pythonista action menu, for whatever reason, will only let you export files with a .py extension.  A cheap workaround to get the resulting html file in Dropbox, Google Drive, etc. anyway is to just temporarily slap a .py extension on the html file.  Then, by magic, the export menu will appear, and, thereafter, the good old iOS "open in" dialogue.
 
+Alternatively, the easiest possible way to scrape something then get it right out of Pythonista is to download [this wrapper script](https://gist.github.com/paultopia/1103beb1980851a57977), then change your bookmarklet to point to scrapewrap.py rather than spideyscrape.py --- it will simply pop up an "open in" menu when scraping is complete, and you can send directly to Dropbox, PDF converter, or whatever.
+
 Please only scrape content with copyright terms that permit copying.  Be nice to writers.  The primary intended use of this is to scrape documents offered to the public under licenses that permit copying, but which are often distributed in clueless formats (such as the documentation for many open-source software packages, which is often provided under Creative Commons or MIT licenses, permitting scraping).
 
 **Contributing**: 
